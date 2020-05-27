@@ -1,4 +1,4 @@
-package com.example.Ecommerce.Model;
+package com.example.Ecommerce.model;
 
 import java.util.Set;
 
@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "orders")
+@Table(name="orders")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,15 +23,13 @@ public class Order {
 	private float amount;
 	
 
-	
-	 @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	 private Set<Product> productSet;
-	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Product> productSet;
+
 	
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name = "userId")
 	private User user;
-
 
 	public int getOrderId() {
 		return orderId;
@@ -39,14 +37,6 @@ public class Order {
 
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
-	}
-
-	public Set<Product> getProductSet() {
-		return productSet;
-	}
-
-	public void setProductSet(Set<Product> productSet) {
-		this.productSet = productSet;
 	}
 
 	public float getAmount() {
@@ -64,4 +54,13 @@ public class Order {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Set<Product> getProductSet() {
+		return productSet;
+	}
+
+	public void setProductSet(Set<Product> productSet) {
+		this.productSet = productSet;
+	}
+	
 }
