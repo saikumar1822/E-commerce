@@ -1,39 +1,20 @@
-package com.example.Ecommerce.Service;
-
-import java.util.List;
+package com.example.Ecommerce.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
-import com.example.Ecommerce.Exception.ProductNameNotFoundException;
-import com.example.Ecommerce.Model.Category;
-import com.example.Ecommerce.Model.Product;
-import com.example.Ecommerce.Model.User;
-import com.example.Ecommerce.Repository.ProductRepository;
-
+import com.example.Ecommerce.model.User;
+import com.example.Ecommerce.repository.UserRepository;
 
 @Service
 public class UserService {
-	
-	
-	
 	@Autowired
-	ProductRepository productRepository;
+	UserRepository userRepository;
 
-
-	public List<Product> viewProductByName(String productName) {
-		List<Product> products=	productRepository.findByProductNameLike("%" + productName + "%");
-		if(products==null) {
-			throw new ProductNameNotFoundException(productName);
-		}
-		else {
-			return products;
-		}
-
-
+	public User getUserById(long id) {
+		return userRepository.findById(id).get();
+	}
+	
 	
 
-}
 }
