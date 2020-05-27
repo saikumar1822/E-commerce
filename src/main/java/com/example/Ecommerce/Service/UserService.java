@@ -25,7 +25,7 @@ public class UserService {
 
 	public List<Product> viewProductByName(String productName) {
 		List<Product> products=	productRepository.findByProductNameLike("%" + productName + "%");
-		if(products==null) {
+		if(products.isEmpty()) {
 			throw new ProductNameNotFoundException(productName);
 		}
 		else {
