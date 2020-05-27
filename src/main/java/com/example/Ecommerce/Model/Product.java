@@ -1,8 +1,6 @@
-package com.example.Ecommerce.Model;
+package com.example.Ecommerce.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,40 +8,38 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer productid;
+	private Integer productId;
 
-	private String productName;
+	private String name;
 
 	private Float price;
 
-	@JsonIgnoreProperties("product")
-	@ManyToOne(optional = false)
-	@JoinColumn
+	@ManyToOne
+	@JoinColumn(name = "categoryId")
 	private Category category;
+	@ManyToOne
+	@JoinColumn(name = "orderId")
+	private Order order;
 	
-
-
-	public Integer getProductid() {
-		return productid;
+	public Integer getProductId() {
+		return productId;
 	}
 
-	public void setProductid(Integer productid) {
-		this.productid = productid;
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
-	public String getProductName() {
-		return productName;
+	public String getName() {
+		return name;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Float getPrice() {
@@ -60,6 +56,14 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 	
 	

@@ -1,16 +1,9 @@
-package com.example.Ecommerce.Repository;
-
-import java.util.List;
+package com.example.Ecommerce.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.example.Ecommerce.model.Product;
 
-import com.example.Ecommerce.Model.Product;
-
-public interface ProductRepository extends JpaRepository<Product, Integer>{
-
-	List<Product> findByProductNameLike(String productName);
-
-	
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 }
